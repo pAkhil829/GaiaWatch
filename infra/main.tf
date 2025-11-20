@@ -51,3 +51,17 @@ resource "random_integer" "suffix" {
 output "cosmos_db_endpoint" {
   value = azurerm_cosmosdb_account.db.endpoint
 }
+# 6. Create Static Web App (The Website + API Host)
+resource "azurerm_static_site" "web" {
+  name                = "gaiawatch-app"
+  resource_group_name = azurerm_resource_group.rg.name
+  location            = "West US 2" # Static Apps are global, but we pick a region for metadata
+  sku_tier            = "Free"      # <--- 100% Free
+  sku_size            = "Free"
+}
+
+# 7. Output the Deployment Token (The Key for GitHub)
+output "deployment_token" {
+  value     = azurerm_static_site.web.api_key
+  sensitive = true
+}
