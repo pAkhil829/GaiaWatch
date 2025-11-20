@@ -15,7 +15,7 @@ function App() {
 // fetch('http://localhost:7071/api/GetDisasters')
 
 // AFTER (Remove the domain):
-fetch('/api/GetDisasters')
+    fetch('/api/GetDisasters')
       .then(res => res.json())
       .then(data => {
         console.log("Data received:", data); // Debugging line
