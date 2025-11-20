@@ -11,7 +11,11 @@ function App() {
     globeEl.current.controls().autoRotateSpeed = 0.6;
 
     // 2. Fetch Real Data from YOUR Backend
-    fetch('http://localhost:7071/api/GetDisasters')
+    // BEFORE:
+// fetch('http://localhost:7071/api/GetDisasters')
+
+// AFTER (Remove the domain):
+fetch('/api/GetDisasters')
       .then(res => res.json())
       .then(data => {
         console.log("Data received:", data); // Debugging line
